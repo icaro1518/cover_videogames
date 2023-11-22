@@ -9,4 +9,4 @@ results = client.get_all("he3q-86dn")
 results_df = pd.DataFrame.from_records(results)
 
 # Guardar como CSV
-results_df.to_csv("data/raw_data.csv", index=False)
+results_df.to_csv("data_files/raw_data.csv", index=False)
