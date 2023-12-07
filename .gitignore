@@ -4,3 +4,6 @@ env_vars*
 credentials*
 **/build/*
 data_files/
+scripts/data_acquisition/secret.txt
+*.jpg
+*.csv
