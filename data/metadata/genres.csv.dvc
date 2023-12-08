@@ -1,0 +1,5 @@
+outs:
+- md5: 23dcde334da9ceca882a80f364a9053d
+  size: 639
+  hash: md5
+  path: genres.csv

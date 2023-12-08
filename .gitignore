@@ -7,4 +7,3 @@ data_files/
 scripts/data_acquisition/secret.txt
 *.jpg
 *.csv
-/data

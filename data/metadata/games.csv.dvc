@@ -1,0 +1,5 @@
+outs:
+- md5: bd1c99d2ce9808fd715c5b4539409c34
+  size: 1022218
+  hash: md5
+  path: games.csv
