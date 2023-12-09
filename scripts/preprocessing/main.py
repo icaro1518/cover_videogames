@@ -30,8 +30,9 @@ p = Path('data/images/')
 
 images = list(p.glob('**/*.jpg'))
 images_names = [image.name for image in images]
+images_df = pd.DataFrame({"image_id": images_names, "image_path": images})
 ### Preprocesamiento de datos
 df = preprocesamiento_datos(df)
-df = df[df["image_id"].isin(images_names)]
+df = df.merge(images_df, how = "inner", on = "image_id")
 # Almacenar datos preprocesados
 df.to_csv("data/metadata/games_preprocessed.csv", index=False)
