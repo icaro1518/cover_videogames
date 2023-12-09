@@ -7,6 +7,7 @@ np.float = float
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 import ast
+import optuna
 from scripts.training.data_generator import DataGenerator
 
 dict_modelos = {"efficientnet" : {"model_name" : "EfficientNetB0",
@@ -116,20 +117,30 @@ class ModelClassification():
 
     def optuna_objective(self, trial):
         # Generamos nuestro extractor del modelo
-        model = generate_model(self.model_name, False, self.input_size)
+        model = self.generate_model()
         
         # Hiperparametros a optimizar
         optimizer_names = trial.suggest_categorical("kernel", ["Adam", "SGD", "RMSprop"])
         learning_rate = trial.suggest_float("learning_rate", 1e-5, 1e-1, log=True)
         
         # Compilamos el modelo con las características a probar de optuna
-        new_model.compile(loss="categorical_crossentropy",
+        model.compile(loss="categorical_crossentropy",
                         optimizer=getattr(tf.keras.optimizers, optimizer_names)(learning_rate=learning_rate),
                         metrics=["accuracy"])
         
-        hist_model_efficient, new_model = self.training_model(new_model, self.train_generator, self.valid_generator,
+        hist_model_efficient, model = self.training_model(model, self.train_generator, self.valid_generator,
                                                     save_best_only = False, epochs=self.epochs, batch_size = self.batch_size)
         
         score = np.min(hist_model_efficient.history["val_accuracy"])
         
         return score
+
+    def create_study(self, study_name = "neural_networks", direction = "maximize"):
+        study = optuna.create_study(
+                direction=direction,
+                storage="sqlite:///hp.db",
+                study_name=study_name,
+                load_if_exists=True    
+                )
+        study.optimize(func=self.optuna_objective, n_trials=5, n_jobs=-1)
+        return study
