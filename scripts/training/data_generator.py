@@ -1,9 +1,9 @@
 import tensorflow as tf
-
+import numpy as np
 class DataGenerator():
     def __init__(self, all_images, genres_dict, train_idx, test_idx, val_idx, seed = 42):
         self.all_images = all_images
-        self.classes=list(genres_dict.keys())
+        self.classes=genres_dict.keys()
         self.train_idx = train_idx
         self.test_idx = test_idx
         self.val_idx = val_idx
@@ -29,7 +29,7 @@ class DataGenerator():
             seed=self.seed,
             shuffle=True,
             classes = self.classes,
-            class_mode="raw",
+            class_mode="categorical",
             target_size=target_size,
             save_to_dir = "data/augmented_images/train/",
             save_format = "jpg")
@@ -44,7 +44,7 @@ class DataGenerator():
             shuffle=True,
             classes = self.classes,
             target_size=target_size,
-            class_mode="raw")
+            class_mode="categorical")
 
         test_generator=self.test_datagen.flow_from_dataframe(
             dataframe=self.all_images.loc[self.test_idx],
