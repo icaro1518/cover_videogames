@@ -3,25 +3,37 @@
 Este documento contiene los resultados del análisis exploratorio de datos.
 
 ## Resumen general de los datos
-
-En esta sección se presenta un resumen general de los datos. Se describe el número total de observaciones, variables, el tipo de variables, la presencia de valores faltantes y la distribución de las variables.
+Se tienen 7303 covers de los videojuegos con los géneros asociados a este. Para esto se tuvieron en cuenta los siguientes aspectos:
+1. Solo se tomaron los juegos de la última generación de consolas "Xbox Series S|X", "Nintendo Switch" y "Play Station 5".
+2. Se tomaron todos los géneros posibles asociados. En este caso son 23 géneros. 
 
 ## Resumen de calidad de los datos
+Se puede observar que se tiene una diferencia entre las imágenes y el dataset de metadata de los juegos. 
+* Se tienen 7303 imágenes en el dataset que hacen referencia a las portadas de los videojuegos.
+* Hay 7360 registros en el dataset de "games.csv".
 
-En esta sección se presenta un resumen de la calidad de los datos. Se describe la cantidad y porcentaje de valores faltantes, valores extremos, errores y duplicados. También se muestran las acciones tomadas para abordar estos problemas.
+
+## Valores faltantes
+
+|  is_in_dataset 	| False 	| True 	|
+|---------------:	|------:	|-----:	|
+| is_in_imagenes 	|       	|      	|
+|          False 	|     0 	|  285 	|
+|           True 	|   228 	| 7075 	|
+Por lo tanto, solo se toman los datos que están en común entre la metadata y las imágenes, es decir, 7075 datos. 
+
+## Errores y duplicados
+
 
 ## Variable objetivo
+![genres_summary](genres_summary.png)
 
-En esta sección se describe la variable objetivo. Se muestra la distribución de la variable y se presentan gráficos que permiten entender mejor su comportamiento.
 
 ## Variables individuales
 
-En esta sección se presenta un análisis detallado de cada variable individual. Se muestran estadísticas descriptivas, gráficos de distribución y de relación con la variable objetivo (si aplica). Además, se describen posibles transformaciones que se pueden aplicar a la variable.
 
 ## Ranking de variables
 
-En esta sección se presenta un ranking de las variables más importantes para predecir la variable objetivo. Se utilizan técnicas como la correlación, el análisis de componentes principales (PCA) o la importancia de las variables en un modelo de aprendizaje automático.
 
 ## Relación entre variables explicativas y variable objetivo
 
-En esta sección se presenta un análisis de la relación entre las variables explicativas y la variable objetivo. Se utilizan gráficos como la matriz de correlación y el diagrama de dispersión para entender mejor la relación entre las variables. Además, se pueden utilizar técnicas como la regresión lineal para modelar la relación entre las variables.

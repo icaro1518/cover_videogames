@@ -1,6 +1,6 @@
-# Predicción precios de combustibles en Colombia
+# Clasificación del género de videojuegos a través de sus portadas
 
-El presente repositorio almacena una proyecto de ML donde se busca presentar una predicción de los precios de combustibles en Colombia basados en los datos entregados por el Ministerio de Minas y Energía.
+El presente repositorio almacena una proyecto de ML donde se busca clasificar el género de videojuegos por las portadas.
 
 Esta plantilla proporciona las siguientes carpetas y archivos:
 
