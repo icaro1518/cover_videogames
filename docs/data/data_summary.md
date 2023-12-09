@@ -49,6 +49,12 @@ Como se puede ver en el siguiente gráfico:
 Para tratar este desbalanceo, se buscará hacer dos cosas:
 * Remover los géneros que tengan menos importancia o sean más específicos y no generen valor. 
 * Usar class-weights en el entrenamiento del modelo para que así se puede mitigar el error. 
+
+Luego de quedarnos solo con el top 12 de los géneros, tenemos lo siguiente:
+![genres_summary_clean](genres_summary_clean.png)
+
+Adicionalmente, removemos todos aquellos registros que al quedarnos con solo el top 12 de los géneros no tienen ningún género asignado. Para al final quedarnos con 6916 registros.
+
 ## Variables individuales
 En este caso, las variables que explicarán el género son las imágenes. Para poder observar cómo se comportan los tamaños se hace el siguiente gráfico.
 ![tamanio_imagenes](tamanio_imagenes.png)
