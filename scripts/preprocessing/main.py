@@ -44,4 +44,4 @@ genres_df = pd.read_csv("data/metadata/genres.csv")
 genres_df = genres_df[genres_df["slug"].isin(first_12_genres)]
 # Almacenar datos preprocesados
 df.to_csv("data/metadata/games_preprocessed.csv", index=False)
-df.to_csv("data/metadata/genres_preprocessed.csv", index=False)
+genres_df.to_csv("data/metadata/genres_preprocessed.csv", index=False)
