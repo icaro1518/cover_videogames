@@ -38,10 +38,10 @@ df = df.merge(images_df, how = "inner", on = "image_id")
 first_12_genres = df.explode("genres")["genres"].value_counts().index[:12]
 df["genres"] = df["genres"].apply(lambda x: [genre for genre in x if genre in first_12_genres])
 df = df[~df["genres"].apply(lambda x:len(x) == 0)]
+df.to_csv("data/metadata/games_preprocessed.csv", index=False)
 
 # Crear nuevo dataframe con los géneros filtrados
 genres_df = pd.read_csv("data/metadata/genres.csv")
 genres_df = genres_df[genres_df["slug"].isin(first_12_genres)]
 # Almacenar datos preprocesados
-df.to_csv("data/metadata/games_preprocessed.csv", index=False)
 genres_df.to_csv("data/metadata/genres_preprocessed.csv", index=False)
