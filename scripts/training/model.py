@@ -7,7 +7,7 @@ np.float = float
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 import ast
-import optuna
+import mlflow
 from scripts.training.data_generator import DataGenerator
 
 dict_modelos = {"efficientnet" : {"model_name" : "EfficientNetB0",
@@ -115,32 +115,37 @@ class ModelClassification():
 
         return hist_model, model
 
-    def optuna_objective(self, trial):
+    def mlflow_run(self, optimizer_name, learning_rate, run_name, exp):
+        
+        run = mlflow.start_run(run_name=run_name, experiment_id=exp)
         # Generamos nuestro extractor del modelo
         model = self.generate_model()
         
-        # Hiperparametros a optimizar
-        optimizer_names = trial.suggest_categorical("kernel", ["Adam", "SGD", "RMSprop"])
-        learning_rate = trial.suggest_float("learning_rate", 1e-5, 1e-1, log=True)
-        
-        # Compilamos el modelo con las características a probar de optuna
+        # Compilamos el modelo con las características a probar del grid search
         model.compile(loss="categorical_crossentropy",
-                        optimizer=getattr(tf.keras.optimizers, optimizer_names)(learning_rate=learning_rate),
+                        optimizer=getattr(tf.keras.optimizers, optimizer_name)(learning_rate=learning_rate),
                         metrics=["accuracy"])
         
-        hist_model_efficient, model = self.training_model(model, self.train_generator, self.valid_generator,
-                                                    save_best_only = False, epochs=self.epochs, batch_size = self.batch_size)
+        hist_model, model = self.training_model(model, self.train_generator, self.valid_generator,
+                                                save_best_only = False, epochs=self.epochs, batch_size = self.batch_size)
         
-        score = np.min(hist_model_efficient.history["val_accuracy"])
+        for i in hist_model.epoch:
+            metrics = {}
+            for metric_name in hist_model.history:
+                metrics[metric_name] = hist_model.history[metric_name][i]
+            mlflow.log_metrics(metrics, step=i)
+        mlflow.log_params({"optimizer" : optimizer_name,
+                           "learning_rate" : learning_rate})
+        mlflow.tensorflow.log_model(model, "model")        
+        mlflow.end_run()
         
-        return score
-
-    def create_study(self, study_name = "neural_networks", direction = "maximize"):
-        study = optuna.create_study(
-                direction=direction,
-                storage="sqlite:///hp.db",
-                study_name=study_name,
-                load_if_exists=True    
-                )
-        study.optimize(func=self.optuna_objective, n_trials=5, n_jobs=-1)
-        return study
+        return run, hist_model
+    
+    def create_gridsearch(self, exp_id):
+        optimizadores = ["Adam", "SGD", "RMSprop"]
+        learning_rates = [1e-3, 1e-4, 1e-5]
+        
+        for optimizer in optimizadores:
+            for learning_rate in learning_rates:
+                run_name = f"{self.model_name}_{optimizer}_{learning_rate}"
+                self.mlflow_run(optimizer, learning_rate, run_name, exp_id)
