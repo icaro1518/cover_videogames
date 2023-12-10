@@ -1,9 +1,10 @@
 import sys
-sys.path.append("scripts/")
-from scripts.training.test import TestModel
+sys.path.insert(0, 'C://Users//mface//cover_videogames//src')
+
+from cover_videogames.training.test import TestModel
 from sklearn.metrics import classification_report
 
-test = TestModel(model = "runs:/caa8665f134d489298fb359f0c33bf5e/model",
+test = TestModel(model = "runs:/712454f6885349f1ba4f4a2d2233d399/model",
                  model_name="efficientnet",
                  batch_size=32,)
 
@@ -28,7 +29,8 @@ print(classification_report(y_one_hot, predictions_int))
 print("\n")
 print("===========================================================")
 
-test = TestModel(model = "runs:/bee34101e19846f2a4c256bd09c3a83a/model",
+
+test = TestModel(model = "runs:/aac44e0148a442fd9dc6ce9b878011f0/model",
                  model_name="mobilenet",
                  batch_size=32,)
 

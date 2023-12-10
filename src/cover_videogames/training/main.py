@@ -1,5 +1,8 @@
+import sys
+sys.path.insert(0, '../..')
+
 import mlflow
-from scripts.training.model import ModelClassification, dict_modelos
+from cover_videogames.models.model import ModelClassification, dict_modelos
 
 if __name__ == "__main__":
     mlflow.set_tracking_uri("http://127.0.0.1:8080/")

@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, '../..')
+
 import pandas as pd
 import numpy as np
 np.object = object
@@ -8,7 +11,7 @@ import tensorflow as tf
 from sklearn.model_selection import train_test_split
 import ast
 import mlflow
-from scripts.training.data_generator import DataGenerator
+from cover_videogames.training.data_generator import DataGenerator
 
 dict_modelos = {"efficientnet" : {"model_name" : "EfficientNetB0",
                                   "input_size" : (224, 224, 3),
