@@ -35,7 +35,9 @@ conda activate myenv3
 python -m pip install mlflow, numpy, tensorflow, pandas, protobuf==3.20.*
 
 ```
-
+Si esta configuración no funciona se puede crear el environment a partir del yml
+```
+conda env create -f docs/deployment/environment.yml
 - **Instrucciones de configuración:** 
 Activar servidor de mlflow
 ```

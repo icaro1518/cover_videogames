@@ -6,7 +6,8 @@ Clasificación del género de videojuegos a través de sus portadas
 
 ## Objetivo del Proyecto
 
-El objetivo es crear una herramienta que pueda predecir cuáles son los posibles géneros que lo identifiquen. 
+El objetivo es crear una herramienta que pueda predecir cuáles son los posibles géneros de un videojuego a partir de su portada. 
+
 ## Alcance del Proyecto
 
 Se tomarán los datos de las portadas de videojuegos de Xbox Series S|X, Nintendo Switch y Play Station 5 y con esto se generá un clasificador. 

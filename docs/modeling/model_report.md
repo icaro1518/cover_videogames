@@ -1,7 +1,5 @@
 # Reporte del Modelo Final
 
-## Resumen Ejecutivo
-
 ## Descripción del Problema
 
 Se busca un modelo que pueda predecir los posibles géneros de un juego a partir de su portada. 
