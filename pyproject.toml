@@ -5,11 +5,13 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "cover_videogames"
 version = "0.1.0"
-authors = [{name = "autor1", email = "correo@correo.com"}]
-description = "Descripción del proyecto"
+authors = [{name = "Heiler Santiago Gomez", email = "hsgomezp@unal.edu.co"}]
+description = "Clasificación de videojuegos por sus portadas"
 requires-python = ">3.8"
 dependencies = [
-    "numpy"
+    "numpy",
+    "tensorflow",
+    "pandas"
 ]
 
 [tool.setuptools.packages.find]

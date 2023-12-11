@@ -2,24 +2,20 @@
 
 ## Resumen Ejecutivo
 
-En esta sección se presentará un resumen de los resultados obtenidos del modelo final. Es importante incluir los resultados de las métricas de evaluación y la interpretación de los mismos.
-
 ## Descripción del Problema
 
-En esta sección se describirá el problema que se buscó resolver con el modelo final. Se debe incluir una descripción detallada del problema, el contexto en el que se desarrolla, los objetivos que se persiguen y la justificación del modelo.
+Se busca un modelo que pueda predecir los posibles géneros de un juego a partir de su portada. 
 
 ## Descripción del Modelo
 
-En esta sección se describirá el modelo final que se desarrolló para resolver el problema planteado. Se debe incluir una descripción detallada del modelo, la metodología utilizada y las técnicas empleadas.
+Se uso un modelo preentrenado de ResNet con transfer learning sobre la última capa, es un modelo Multi-Label que tendrá de forma independiente cada uno de los outputs. 
 
 ## Evaluación del Modelo
+El modelo se evalúo mediante diferentes métricas como Accuracy, AUC, Recall, Precision y F1. En donde se puede ver que el modelo tiene muchas oportunidades de mejora y tuvo varios problemas aprendiendo debido a la gran cantidad de categorías y el desbalance. 
+![selected-resnet](selected-resnet.png)
+![metrics-resnet](metrics-resnet.png)
 
-En esta sección se presentará una evaluación detallada del modelo final. Se deben incluir las métricas de evaluación que se utilizaron y una interpretación detallada de los resultados.
 
 ## Conclusiones y Recomendaciones
 
-En esta sección se presentarán las conclusiones y recomendaciones a partir de los resultados obtenidos. Se deben incluir los puntos fuertes y débiles del modelo, las limitaciones y los posibles escenarios de aplicación.
-
-## Referencias
-
-En esta sección se deben incluir las referencias bibliográficas y fuentes de información utilizadas en el desarrollo del modelo.
+Se podría intentar correr un modelo a través de Fine Tuning con la ResNet porque tal vez así pueda aprender mejor el problema, para esto adicionalmente se debe aumentar el dataset y tener más imágenes por cada categoría. 
