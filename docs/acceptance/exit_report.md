@@ -2,31 +2,27 @@
 
 ## Resumen Ejecutivo
 
-Este informe describe los resultados del proyecto de machine learning y presenta los principales logros y lecciones aprendidas durante el proceso.
+El modelo para predecir los géneros de un videojuego es un proyecto haciendo uso de una variable de salida multilabel, en donde podremos predecir más de una categoría para cada videojuego. Se probaron múltiples modelos y no tuvieron los mejores resultados. Se puede a futuro mejorar y probar nuevas cosas con el modelo para poder tener una solución más robusta. 
 
 ## Resultados del proyecto
 
-- Resumen de los entregables y logros alcanzados en cada etapa del proyecto.
-- Evaluación del modelo final y comparación con el modelo base.
-- Descripción de los resultados y su relevancia para el negocio.
+- Para este proyecto se entrenaron 3 Modelos variando sus hiperparámetros de Optimizadores y learning Rate. Teniendo como "mejor" modelo el ResNet. 
+- El modelo tiene muchas oportunidades de mejora agregando más datos y entrenando a través de un fine tuning o una red custom.
+- El modelo en generar el da una probabilidad muy alta a todas las categorías y no es muy funcional. Hay que iterar sobre este para poder generar un modelo más robusto. 
 
 ## Lecciones aprendidas
 
-- Identificación de los principales desafíos y obstáculos encontrados durante el proyecto.
-- Lecciones aprendidas en relación al manejo de los datos, el modelamiento y la implementación del modelo.
-- Recomendaciones para futuros proyectos de machine learning.
+- La obtención de los datos a partir del API puede llegar a ser muy complicado, entendiendo los limitantes de la herramienta.
+- No tenía conocimientos de los modelos multilabel entonces fue interesante abordarlo.
+- Hubo varios conflictos con Optuna y MLFlow con el modelo de Tensorflow, generaba un error entonces se optó por hacer un gridsearch con las oportunidades.
+- No se pudo fácilmente desplegar un modelo de CNN a través de MLFlow, ya que este modelo deseaba directamente los datos a predecir y con la imagen se necesitaba es el path en particular para poder tener la predicción.
 
 ## Impacto del proyecto
 
-- Descripción del impacto del modelo en el negocio o en la industria.
-- Identificación de las áreas de mejora y oportunidades de desarrollo futuras.
+- El modelo puede tener mejores resultados a través de sus métricas, es posible reducir el número de categorías o aumentar los datos para no tener tantos problemas de desbalance.
 
 ## Conclusiones
 
-- Resumen de los resultados y principales logros del proyecto.
-- Conclusiones finales y recomendaciones para futuros proyectos.
+- Se logró implementar de inicio a fin el desarrollo de un modelo siguiendo la metodología de CRISP-DM.
+- Se puede entrenar un mejor modelo buscando un fine tuning y ajustando un poco mejor los datos y outputs.
 
-## Agradecimientos
-
-- Agradecimientos al equipo de trabajo y a los colaboradores que hicieron posible este proyecto.
-- Agradecimientos especiales a los patrocinadores y financiadores del proyecto.

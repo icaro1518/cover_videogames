@@ -38,14 +38,15 @@ python -m pip install mlflow, numpy, tensorflow, pandas, protobuf==3.20.*
 Si esta configuración no funciona se puede crear el environment a partir del yml
 ```
 conda env create -f docs/deployment/environment.yml
+```
 - **Instrucciones de configuración:** 
 Activar servidor de mlflow
 ```
 mlflow server --host 127.0.0.1 -p 8080
 ```
 Luego de activado el servidor, se puede usar el cli sin problema como aparece en el siguiente punto.
-
-- **Instrucciones de uso:** 
+ 
+ - **Instrucciones de uso:** 
 En la terminal, se corre el cli de python, indicando el path al archivo que queremos evaluar.  
 ```
 python src/cover_videogames/mlcli.py --path data\images\u0pi1ltyz2mtmesnxwzq.jpg
