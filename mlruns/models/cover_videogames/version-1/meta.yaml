@@ -1,0 +1,12 @@
+creation_timestamp: 1702252703621
+current_stage: Production
+description: ''
+last_updated_timestamp: 1702252878909
+name: cover_videogames
+run_id: c90e8a06b2a14ec3ac67910a348fe628
+run_link: ''
+source: mlruns/c90e8a06b2a14ec3ac67910a348fe628/artifacts/model
+status: READY
+status_message: null
+user_id: null
+version: 1
